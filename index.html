@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بحث الذكاء الاصطناعي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+:root{
+  --c1:#2563eb;--c2:#9333ea;--c3:#0891b2;--c4:#16a34a;
+  --bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text2:#94a3b8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  direction:rtl;
+  min-height:100vh;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 24px 60px;
+  background:linear-gradient(180deg,#0f172a 0%,#1e3a5f 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-content{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+
+.hero-icon{
+  width:80px;height:80px;
+  margin:0 auto 24px;
+  background:linear-gradient(135deg,#2563eb,#9333ea);
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  box-shadow:0 8px 32px rgba(37,99,235,0.3);
+}
+
+.hero h1{
+  font-size:clamp(32px,5vw,52px);
+  font-weight:900;
+  margin-bottom:12px;
+  background:linear-gradient(135deg,#fff,#fbbf24);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero p{
+  font-size:18px;
+  color:var(--text2);
+  line-height:1.8;
+  margin-bottom:8px;
+}
+
+.hero-meta{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin-top:32px;
+  flex-wrap:wrap;
+}
+
+.hero-meta span{
+  font-size:14px;
+  color:var(--text2);
+  background:rgba(255,255,255,0.05);
+  padding:6px 16px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.sections{
+  max-width:900px;
+  margin:0 auto;
+  padding:48px 24px 80px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.section-card{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background:var(--surface);
+  border-radius:20px;
+  padding:28px 32px;
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid rgba(255,255,255,0.06);
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.section-card::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:4px;height:100%;
+  transition:width 0.3s ease;
+}
+
+.section-card:nth-child(1)::before{background:var(--c1);}
+.section-card:nth-child(2)::before{background:var(--c2);}
+.section-card:nth-child(3)::before{background:var(--c3);}
+.section-card:nth-child(4)::before{background:var(--c4);}
+
+.section-card:hover{
+  transform:translateX(-8px);
+  border-color:rgba(255,255,255,0.12);
+  box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+
+.section-card:hover::before{width:6px;}
+
+.section-num{
+  width:56px;height:56px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  font-weight:900;
+  flex-shrink:0;
+  color:white;
+}
+
+.section-card:nth-child(1) .section-num{background:linear-gradient(135deg,var(--c1),#3b82f6);}
+.section-card:nth-child(2) .section-num{background:linear-gradient(135deg,var(--c2),#a855f7);}
+.section-card:nth-child(3) .section-num{background:linear-gradient(135deg,var(--c3),#06b6d4);}
+.section-card:nth-child(4) .section-num{background:linear-gradient(135deg,var(--c4),#22c55e);}
+
+.section-info{flex:1;}
+.section-info h3{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+.section-info p{
+  font-size:14px;
+  color:var(--text2);
+  line-height:1.6;
+}
+
+.section-arrow{
+  font-size:20px;
+  color:var(--text2);
+  transition:transform 0.3s ease,color 0.3s ease;
+}
+
+.section-card:hover .section-arrow{
+  transform:translateX(-4px);
+  color:var(--text);
+}
+
+.footer{
+  text-align:center;
+  padding:32px 24px;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.footer p{
+  font-size:13px;
+  color:var(--text2);
+}
+
+@media(max-width:600px){
+  .hero{padding:60px 20px 40px;}
+  .section-card{padding:20px 24px;}
+  .section-num{width:48px;height:48px;font-size:20px;}
+  .hero-meta{gap:12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-icon">🧠</div>
+    <h1>بحث الذكاء الاصطناعي</h1>
+    <p>أربعة أقسام شاملة تغطي الأساسيات، التعلم الآلي، اللغة والرؤية، والتطبيقات والمستقبل</p>
+    <div class="hero-meta">
+      <span>📄 4 أقسام</span>
+      <span>🎓 للمراجعة الجماعية</span>
+      <span>🔄 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="sections">
+  <a href="section1.html" class="section-card">
+    <div class="section-num">١</div>
+    <div class="section-info">
+      <h3>الأساسيات والتاريخ</h3>
+      <p>ما هو الذكاء الاصطناعي؟ أنواعه، تاريخه من 1950 إلى 2026، والمحطات الرئيسية</p>
+    </div>
+    <div class="section-arrow">←</div>
+  </a>
+
+  <a href="section2.html" class="section-card">
+    <div class="section-num">٢</div>
+    <div class="section-info">
+      <h3>التعلم الآلي والعميق</h3>
+      <p>أنواع التعلم، الشبكات العصبية، Transformers، واتجاهات 2025–2026</p>
+    </div>
+    <div class="section-arrow">←</div>
+  </a>
+
+  <a href="section3.html" class="section-card">
+    <div class="section-num">٣</div>
+    <div class="section-info">
+      <h3>اللغة والرؤية والتوليد</h3>
+      <p>NLP، Computer Vision، Generative AI، والذكاء متعدد الوسائط</p>
+    </div>
+    <div class="section-arrow">←</div>
+  </a>
+
+  <a href="section4.html" class="section-card">
+    <div class="section-num">٤</div>
+    <div class="section-info">
+      <h3>التطبيقات والمستقبل</h3>
+      <p>تطبيقات عملية، أخلاقيات، تحديات، ورؤية مستقبلية 2026 وما بعدها</p>
+    </div>
+    <div class="section-arrow">←</div>
+  </a>
+</div>
+
+<div class="footer">
+  <p>مخصص للمذاكرة والقراءة بين أعضاء الفريق — 2026</p>
+</div>
+
+</body>
+</html>
